@@ -6,7 +6,7 @@ function getStoredCities () {
     for (var i = 0; i < previousCities.length; i++) {
         var newButton = $(`<button>`)
         newButton.addClass(`city-button rounded`)
-        newButton.val(previousCities[i])
+        newButton.attr("data-city", `${previousCities[i]}`)
         newButton.text(`${previousCities[i]}`)
         var newDiv = $(`<div>`)
         newDiv.addClass("row p-2 m-2")
@@ -25,7 +25,6 @@ function showWeather () {
         method: "GET"
     }) 
     .then (function (response) {
-        console.log(response)
         $("#today").removeClass("hide")
         $("#forecast").removeClass("hide")
         $("#city-name").text(`Today in ${response.city.name}:`)
@@ -86,13 +85,26 @@ function showWeather () {
 $("#search-button").click(function () {
     var currentCity = $("#city-input").val()
     previousCities.unshift(currentCity)
-    localStorage.setItem("city-names", previousCities);
+    localStorage.setItem("city-names", previousCities)
+    showWeather()
+    getStoredCities()
+})
+
+$("#city-buttons").on('click', '.city-button', function () {
+    var clickedButton = $(this).attr("data-city")
+    var index = previousCities.indexOf(clickedButton)
+    previousCities.unshift(previousCities.splice(index, 1)[0])
+    // data.unshift(data.splice(index, 1)[0]);
+    // delete previousCities[index]
+    // previousCities.unshift(clickedButton)
+    localStorage.setItem("city-names", previousCities)
     showWeather()
     getStoredCities()
 })
 
 $("#clear-storage").click(function(){
     localStorage.clear()
+    location.reload()
 });
 
 showWeather()
