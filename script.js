@@ -5,7 +5,7 @@ function getStoredCities () {
     $("#city-buttons").empty()
     for (var i = 0; i < previousCities.length; i++) {
         var newButton = $(`<button>`)
-        newButton.addClass(`city-button`)
+        newButton.addClass(`city-button rounded`)
         newButton.val(previousCities[i])
         newButton.text(`${previousCities[i]}`)
         var newDiv = $(`<div>`)
