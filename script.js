@@ -51,13 +51,13 @@ function showWeather () {
         .then (function (response) {
             $(`#day-1-uvi`).text(`UVI: ${response.value}`)
             if (response.value < 3) {
-                $(`#day-1-uvi`).addClass("bg-green")
+                $(`#day-1-uvi`).attr("class", "bg-green")
             }
             else if (response.value < 6) {
-                $(`#day-1-uvi`).addClass("bg-yellow")
+                $(`#day-1-uvi`).attr("class", "bg-yellow")
             }
             else {
-                $(`#day-1-uvi`).addClass("bg-red")
+                $(`#day-1-uvi`).attr("class", "bg-red")
             }
         }) 
 
@@ -69,13 +69,13 @@ function showWeather () {
             for (i=0; i < response.length; i++) {
                 $(`#day-${i+2}-uvi`).text(`UVI: ${response[i].value}`)
                 if (response[i].value < 3) {
-                    $(`#day-${i+2}-uvi`).addClass("bg-green")
+                    $(`#day-${i+2}-uvi`).attr("class", "bg-green")
                 }
                 else if (response[i].value < 6) {
-                    $(`#day-${i+2}-uvi`).addClass("bg-yellow")
+                    $(`#day-${i+2}-uvi`).attr("class", "bg-yellow")
                 }
                 else {
-                    $(`#day-${i+2}-uvi`).addClass("bg-red")
+                    $(`#day-${i+2}-uvi`).attr("class", "bg-red")
                 }
             }
         }) 
@@ -94,9 +94,6 @@ $("#city-buttons").on('click', '.city-button', function () {
     var clickedButton = $(this).attr("data-city")
     var index = previousCities.indexOf(clickedButton)
     previousCities.unshift(previousCities.splice(index, 1)[0])
-    // data.unshift(data.splice(index, 1)[0]);
-    // delete previousCities[index]
-    // previousCities.unshift(clickedButton)
     localStorage.setItem("city-names", previousCities)
     showWeather()
     getStoredCities()
