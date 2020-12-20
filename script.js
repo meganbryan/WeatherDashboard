@@ -31,15 +31,15 @@ function showWeather () {
         $("#city-name").text(`Today in ${response.city.name}:`)
         var lat = (`${response.city.coord.lat}`)
         var lon = (`${response.city.coord.lon}`)
-        var queryURL_UVI = `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${APIkey}`
-        var queryURL_UVI_forecast = `http://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${lon}&cnt=3&appid=${APIkey}`
+        var queryURL_UVI = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${APIkey}`
+        var queryURL_UVI_forecast = `https://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${lon}&cnt=3&appid=${APIkey}`
 
         for (var i = 0; i < response.list.length; i+=8) {
             var date = response.list[i].dt_txt
             var dayNumber = [1, 2, 3, 4, 5]
             var date_formatted = date.split(" ")
             $(`#day-${dayNumber[i/8]}`).text(`${date_formatted[0]}`)
-            $(`#day-${dayNumber[i/8]}-icon`).attr("src", `http://openweathermap.org/img/w/${response.list[i].weather[0].icon}.png`)
+            $(`#day-${dayNumber[i/8]}-icon`).attr("src", `https://openweathermap.org/img/w/${response.list[i].weather[0].icon}.png`)
             $(`#day-${dayNumber[i/8]}-temp`).text(`Temperature: ${Math.round(response.list[i].main.temp)} °F`)
             $(`#day-${dayNumber[i/8]}-humidity`).text(`Humidity: ${response.list[i].main.humidity}%`)
             $(`#day-${dayNumber[i/8]}-wind`).text(`Wind Speed: ${response.list[i].wind.speed} MPH`)     
