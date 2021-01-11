@@ -1,7 +1,7 @@
-# WeatherDashboard
-#### This is the repository for Homework 6, due December 19th, 2020.
+# Weather Dashboard
+#### This application provides a five-day forecast for any city in the world.
 
-### For this assignment, I have created an HTML file, a CSS file, and a JavaScript file. Using these, I have developed a weather application to display various meteorologic values for a 5 day forecast. Some features of this include:
+### For this project, I have created an HTML file, a CSS file, and a JavaScript file. Using these, I have developed a weather application to display various meteorologic values for a 5 day forecast. Some features of this include:
     * Ability for the user to enter any city, and see a forecast.
     * This information includes temperature, an icon for the weather conditions, humidity, wind speed, and UV Index (with color indications).
     * When the user enters a city, it is saved to local storage for future reference.

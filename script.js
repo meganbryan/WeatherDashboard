@@ -84,13 +84,14 @@ function showWeather () {
 
 $("#search-button").click(function () {
     var currentCity = $("#city-input").val()
+    $("#city-input").val("")
     previousCities.unshift(currentCity)
     localStorage.setItem("city-names", previousCities)
     showWeather()
     getStoredCities()
 })
 
-$("#city-buttons").on('click', '.city-button', function () {
+$("#city-buttons").click('.city-button', function () {
     var clickedButton = $(this).attr("data-city")
     var index = previousCities.indexOf(clickedButton)
     previousCities.unshift(previousCities.splice(index, 1)[0])
